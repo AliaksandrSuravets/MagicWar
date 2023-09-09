@@ -1,6 +1,7 @@
-﻿using UnityEngine;
+﻿using MagicWar.Game.Spells;
+using UnityEngine;
 
-namespace MagicWar.Game
+namespace MagicWar.Game.Player
 {
     public class PlayerAttack : MonoBehaviour
     {
@@ -8,10 +9,11 @@ namespace MagicWar.Game
 
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
-
+        [SerializeField] private Health _health;
+        
         [Header("Settings")]
-        [SerializeField] private GameObject _bulletPrefab;
-        [SerializeField] private Transform _bulletSpawnPositionTransform;
+        [SerializeField] private Spell _spellPrefab;
+        [SerializeField] private Transform _spellSpawnPositionTransform;
 
         #endregion
 
@@ -19,6 +21,11 @@ namespace MagicWar.Game
 
         private void Update()
         {
+            if (_health.IsDead)
+            {
+                return;
+            }
+            
             if (Input.GetButtonDown("Fire1"))
             {
                 Fire();
@@ -29,15 +36,15 @@ namespace MagicWar.Game
 
         #region Private methods
 
-        private void CreateBullet()
+        private void CreateSpell()
         {
-            Instantiate(_bulletPrefab, _bulletSpawnPositionTransform.position, transform.rotation);
+            Instantiate(_spellPrefab, _spellSpawnPositionTransform.position, transform.rotation);
         }
 
         private void Fire()
         {
             _animation.PlayAttack();
-            //CreateBullet();
+            CreateSpell();
         }
 
         #endregion

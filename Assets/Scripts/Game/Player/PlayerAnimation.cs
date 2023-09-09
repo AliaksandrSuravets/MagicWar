@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MagicWar.Game
+namespace MagicWar.Game.Player
 {
     public class PlayerAnimation : MonoBehaviour
     {

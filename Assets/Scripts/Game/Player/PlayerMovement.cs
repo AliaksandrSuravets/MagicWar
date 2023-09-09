@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace MagicWar.Game
+namespace MagicWar.Game.Player
 {
     public class PlayerMovement : MonoBehaviour
     {
@@ -8,7 +8,8 @@ namespace MagicWar.Game
 
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
-
+        [SerializeField] private Health _health;
+        
         [Header("Settings")]
         [SerializeField] private float _speed = 5f;
 
@@ -17,7 +18,12 @@ namespace MagicWar.Game
         #region Unity lifecycle
 
         private void Update()
-        {
+        { 
+            if (_health.IsDead)
+            {
+                return;
+            }
+            
             Rotate();
             Move();
         }
