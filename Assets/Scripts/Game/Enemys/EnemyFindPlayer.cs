@@ -5,17 +5,23 @@ namespace MagicWar.Game.Enemys
 {
     public class EnemyFindPlayer : MonoBehaviour
     {
-        #region Unity lifecycle
+        #region Variables
+
         [Header("Components")]
         [SerializeField] private Transform _playerTransform; //???
         [SerializeField] private Health _health;
-        
+
+        #endregion
+
+        #region Unity lifecycle
+
         private void Update()
         {
             if (_health.IsDead)
             {
                 return;
             }
+
             Rotate();
         }
 

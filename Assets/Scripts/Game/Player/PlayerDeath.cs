@@ -1,10 +1,8 @@
 using System.Collections;
-using System.Collections.Generic;
-using MagicWar.Game.Player;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace MagicWar
+namespace MagicWar.Game.Player
 {
     public class PlayerDeath : MonoBehaviour
     {

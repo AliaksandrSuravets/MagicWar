@@ -1,4 +1,5 @@
-﻿using MagicWar.Game.Spells;
+﻿using System.Collections;
+using MagicWar.Game.Spells;
 using UnityEngine;
 
 namespace MagicWar.Game.Player
@@ -10,10 +11,13 @@ namespace MagicWar.Game.Player
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
         [SerializeField] private Health _health;
-        
+
         [Header("Settings")]
         [SerializeField] private Spell _spellPrefab;
         [SerializeField] private Transform _spellSpawnPositionTransform;
+        [SerializeField] private float _cooldown = 2f;
+
+        private bool _canFire = true;
 
         #endregion
 
@@ -25,9 +29,10 @@ namespace MagicWar.Game.Player
             {
                 return;
             }
-            
-            if (Input.GetButtonDown("Fire1"))
+
+            if (Input.GetButtonDown("Fire1") && _canFire)
             {
+                StartCoroutine(ChangeCanFire());
                 Fire();
             }
         }
@@ -35,6 +40,13 @@ namespace MagicWar.Game.Player
         #endregion
 
         #region Private methods
+
+        private IEnumerator ChangeCanFire()
+        {
+            _canFire = false;
+            yield return new WaitForSeconds(_cooldown);
+            _canFire = true;
+        }
 
         private void CreateSpell()
         {

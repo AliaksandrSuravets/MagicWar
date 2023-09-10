@@ -12,7 +12,6 @@ namespace MagicWar.Game.Spells
         [SerializeField] private float _speed = 10f;
         [SerializeField] private float _lifeTime = 3f;
         [SerializeField] private int _damage;
-        
 
         private float _deathTime;
 
@@ -26,13 +25,13 @@ namespace MagicWar.Game.Spells
             this.StartTimer(_lifeTime, () => Destroy(gameObject));
         }
 
-        #endregion
-
-        private void OnTriggerEnter2D(Collider2D other)
+        private void OnCollisionEnter2D(Collision2D other)
         {
             Health health = other.gameObject.GetComponent<Health>();
             health.ApplyDamage(_damage);
             Destroy(gameObject);
         }
+
+        #endregion
     }
 }

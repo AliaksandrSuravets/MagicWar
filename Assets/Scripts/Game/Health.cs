@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace MagicWar
+namespace MagicWar.Game
 {
     public class Health : MonoBehaviour
     {
@@ -12,17 +12,29 @@ namespace MagicWar
 
         #endregion
 
-        #region Properties
+        #region Events
 
         public event Action HpLessZero;
-        
+
+        #endregion
+
+        #region Properties
+
         public int Hp { get; private set; }
         public bool IsDead { get; private set; }
+
+        #endregion
+
+        #region Unity lifecycle
 
         private void Start()
         {
             Hp = _startHp;
         }
+
+        #endregion
+
+        #region Public methods
 
         public void ApplyDamage(int value)
         {
@@ -35,14 +47,17 @@ namespace MagicWar
             Hp += value;
         }
 
-        public void CheckDead()
+        #endregion
+
+        #region Private methods
+
+        private void CheckDead()
         {
-            if (Hp > 0)
+            if (Hp == 0)
             {
-                return;
+                HpLessZero?.Invoke();
+                IsDead = true;
             }
-            HpLessZero?.Invoke();
-            IsDead = true;
         }
 
         #endregion

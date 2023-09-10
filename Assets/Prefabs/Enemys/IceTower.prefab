@@ -12,8 +12,11 @@ GameObject:
   - component: {fileID: -3074839613490815091}
   - component: {fileID: 7179004765414252866}
   - component: {fileID: 6501823602783352635}
+  - component: {fileID: 8066663357644999014}
+  - component: {fileID: -9157470427207853588}
   - component: {fileID: 7091452880275817132}
   - component: {fileID: 725903848664081451}
+  - component: {fileID: 4828469355444096772}
   m_Layer: 7
   m_Name: IceTower
   m_TagString: Untagged
@@ -79,6 +82,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startHp: 6
+--- !u!114 &8066663357644999014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183751007606935284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0bf8911ee64186aa224f31e77548e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _animator: {fileID: 4828469355444096772}
+--- !u!114 &-9157470427207853588
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183751007606935284}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb38b735fb8f4367bab7847c191a408f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _health: {fileID: 6501823602783352635}
+  _animation: {fileID: 8066663357644999014}
+  _collider2D: {fileID: 725903848664081451}
 --- !u!212 &7091452880275817132
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -160,9 +191,30 @@ CircleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.64
+--- !u!95 &4828469355444096772
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1183751007606935284}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 916b15413ebd1a54e8299c79438791ef, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
