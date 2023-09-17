@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: -6575314754276669251}
   m_Layer: 6
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -159,7 +159,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _animation: {fileID: 5544529683092099054}
-  _health: {fileID: 1447885101604129604}
   _speed: 5
 --- !u!114 &4077141027669232833
 MonoBehaviour:
@@ -203,7 +202,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8874393821ea1944b8fcc8ec34bd122, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _startHp: 3
+  _initialHp: 3
+  _maxHp: 3
 --- !u!114 &4556236039880691935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -218,6 +218,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: {fileID: 1447885101604129604}
   _animation: {fileID: 5544529683092099054}
+  _playerAttack: {fileID: 4077141027669232833}
+  _playerMovement: {fileID: 2198235179236693210}
+  _collider2D: {fileID: 4741069534649128730}
   _timeForRestartLevel: 5
 --- !u!61 &4741069534649128730
 BoxCollider2D:
@@ -276,7 +279,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 1
-  m_Mass: 0.0001
+  m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
@@ -315,7 +318,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6724701117575941307}
   m_LocalRotation: {x: 0, y: 0, z: 1, w: 0}
-  m_LocalPosition: {x: 0, y: 0.998, z: 0}
+  m_LocalPosition: {x: 0, y: 0.498, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

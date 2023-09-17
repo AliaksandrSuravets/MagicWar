@@ -3,11 +3,16 @@ using UnityEngine;
 
 namespace MagicWar.Game.Potions
 {
-    public class Potion : MonoBehaviour
+    public abstract class Potion : MonoBehaviour
     {
         #region Unity lifecycle
 
-        protected virtual void OnCollisionEnter2D(Collision2D other) { }
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            Aplly(other);
+        }
+
+        public virtual void Aplly(Collision2D other) { }
 
         #endregion
     }

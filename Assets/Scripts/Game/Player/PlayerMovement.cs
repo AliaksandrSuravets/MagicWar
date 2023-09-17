@@ -8,8 +8,7 @@ namespace MagicWar.Game.Player
 
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
-        [SerializeField] private Health _health;
-        
+
         [Header("Settings")]
         [SerializeField] private float _speed = 5f;
 
@@ -18,12 +17,7 @@ namespace MagicWar.Game.Player
         #region Unity lifecycle
 
         private void Update()
-        { 
-            if (_health.IsDead)
-            {
-                return;
-            }
-            
+        {
             Rotate();
             Move();
         }

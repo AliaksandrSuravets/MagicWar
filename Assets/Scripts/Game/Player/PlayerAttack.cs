@@ -25,16 +25,13 @@ namespace MagicWar.Game.Player
 
         private void Update()
         {
-            if (_health.IsDead)
+            if (!Input.GetButtonDown("Fire1") || !_canFire)
             {
                 return;
             }
 
-            if (Input.GetButtonDown("Fire1") && _canFire)
-            {
-                StartCoroutine(ChangeCanFire());
-                Fire();
-            }
+            StartCoroutine(ChangeCanFire());
+            Fire();
         }
 
         #endregion

@@ -12,10 +12,12 @@ namespace MagicWar.Game.Potions
 
         #region Unity lifecycle
 
-        protected override void OnCollisionEnter2D(Collision2D other)
+        public override void Aplly(Collision2D other)
         {
-            Health health = other.gameObject.GetComponent<Health>();
-            health.ApplyHeal(_hpRestore);
+            if (other.gameObject.TryGetComponent(out Health healthp))
+            {
+                healthp.Change(_hpRestore);
+            }
             Destroy(gameObject);
         }
 

@@ -7,57 +7,52 @@ namespace MagicWar.Game
     {
         #region Variables
 
-        [Header("Settings")]
-        [SerializeField] private int _startHp = 3;
+        [SerializeField] private int _initialHp = 3;
+        [SerializeField] private int _maxHp = 3;
+
+        private int _current;
 
         #endregion
 
         #region Events
 
-        public event Action HpLessZero;
+        public event Action<int> OnChanged;
 
         #endregion
 
         #region Properties
 
-        public int Hp { get; private set; }
-        public bool IsDead { get; private set; }
+        public int Current
+        {
+            get => _current;
+            private set
+            {
+                bool needChange = _current != value;
+
+                if (needChange)
+                {
+                    _current = value;
+                    OnChanged?.Invoke(_current);
+                }
+            }
+        }
 
         #endregion
 
         #region Unity lifecycle
 
-        private void Start()
+        private void Awake()
         {
-            Hp = _startHp;
+            Current = _initialHp;
         }
 
         #endregion
 
         #region Public methods
 
-        public void ApplyDamage(int value)
+        public void Change(int value)
         {
-            Hp -= value;
-            CheckDead();
-        }
-
-        public void ApplyHeal(int value)
-        {
-            Hp += value;
-        }
-
-        #endregion
-
-        #region Private methods
-
-        private void CheckDead()
-        {
-            if (Hp == 0)
-            {
-                HpLessZero?.Invoke();
-                IsDead = true;
-            }
+            Current = Math.Clamp(Current + value, 0, _maxHp);
         }
 
         #endregion

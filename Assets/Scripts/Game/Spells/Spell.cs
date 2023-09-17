@@ -27,8 +27,12 @@ namespace MagicWar.Game.Spells
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            Health health = other.gameObject.GetComponent<Health>();
-            health.ApplyDamage(_damage);
+            
+            if (other.gameObject.TryGetComponent(out Health healthp))
+            {
+                healthp.Change(-_damage);
+            }
+
             Destroy(gameObject);
         }
 
