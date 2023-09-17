@@ -12,9 +12,13 @@ PrefabInstance:
       propertyPath: _speed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3354252479756808075, guid: a285b68d3bc5bac4dbc6f3a2181b3ab1, type: 3}
+      propertyPath: _animation
+      value: 
+      objectReference: {fileID: 1794917575597360929}
     - target: {fileID: 5173289045589785647, guid: a285b68d3bc5bac4dbc6f3a2181b3ab1, type: 3}
       propertyPath: m_Name
-      value: EnemyIceMag_2 Variant
+      value: EnemyIceMag_2
       objectReference: {fileID: 0}
     - target: {fileID: 7860233525445098717, guid: a285b68d3bc5bac4dbc6f3a2181b3ab1, type: 3}
       propertyPath: m_RootOrder
@@ -65,3 +69,14 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a285b68d3bc5bac4dbc6f3a2181b3ab1, type: 3}
+--- !u!114 &1794917575597360929 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3624536633148852289, guid: a285b68d3bc5bac4dbc6f3a2181b3ab1, type: 3}
+  m_PrefabInstance: {fileID: 3072621370143428448}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0bf8911ee64186aa224f31e77548e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

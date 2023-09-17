@@ -286,6 +286,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9b5b6150f7047a9aa3b6ae00a2877e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _attackDelay: 3
+  _animation: {fileID: 3624536633148852289}
   _spellPrefab: {fileID: 8116920666139038630, guid: 6089b8bd0246fed4bafddf66df0945df, type: 3}
   _spellSpawnPositionTransform: {fileID: 7403132273685076460}
 --- !u!114 &6697714381517829823
@@ -485,7 +487,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 3
 --- !u!114 &7157188678413894688
 MonoBehaviour:
   m_ObjectHideFlags: 0
