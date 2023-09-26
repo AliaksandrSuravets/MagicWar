@@ -4,18 +4,17 @@ using UnityEngine;
 
 namespace MagicWar.Game.Enemies
 {
-    public class EnemyMovementAgro  : EnemyComponent
+    public class EnemyMovementAgro : EnemyComponent
     {
         #region Variables
 
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private EnemyMovement _enemyMovement;
-        
+        [SerializeField] private EnemyIdle _idle;
 
         #endregion
 
         #region Unity lifecycle
-        
 
         private void OnEnable()
         {
@@ -48,6 +47,18 @@ namespace MagicWar.Game.Enemies
             if (_enemyMovement != null)
             {
                 _enemyMovement.SetTarget(otherTransform);
+            }
+
+            if (_idle != null)
+            {
+                if (otherTransform == null)
+                {
+                    _idle.Activate();
+                }
+                else
+                {
+                    _idle.Deactivate();
+                }
             }
         }
 

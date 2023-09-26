@@ -8,24 +8,34 @@ namespace MagicWar.Game.Enemies
         #region Variables
 
         [Header(nameof(EnemyAttack))]
-        [SerializeField] private float _attackDelay = 3f;
+        [SerializeField] private float _attackDelay = 1f;
+        [SerializeField] private EnemyAnimation _animation;
 
-        private IEnumerator _attackRoutine;
-        private bool _canFire = true;
-        private WaitForSeconds _wait;
+        private bool _needAttack;
+        private float _nextAttackTime;
+
+        #endregion
+
+        #region Properties
+
+        protected EnemyAnimation Animation => _animation;
 
         #endregion
 
         #region Unity lifecycle
 
-        private void Awake()
+        private void Update()
         {
-            _wait = new WaitForSeconds(_attackDelay);
-        }
+            if (!_needAttack)
+            {
+                return;
+            }
 
-        private void OnDisable()
-        {
-            StopAttack();
+            if (Time.time >= _nextAttackTime)
+            {
+                _nextAttackTime = Time.time + _attackDelay;
+                OnPerformAttack();
+            }
         }
 
         #endregion
@@ -34,48 +44,21 @@ namespace MagicWar.Game.Enemies
 
         public void StartAttack()
         {
-            _attackRoutine = StartAttackInternal();
-            StartCoroutine(_attackRoutine);
+            _needAttack = true;
         }
 
         public void StopAttack()
         {
-            if (_attackRoutine != null)
-            {
-                StopCoroutine(_attackRoutine);
-                _attackRoutine = null;
-            }
+            _needAttack = false;
         }
 
         #endregion
 
         #region Protected methods
 
-        protected virtual void OnPerformAttack() { }
-
-        #endregion
-
-        #region Private methods
-
-        private IEnumerator ChangeCanFire()
+        protected virtual void OnPerformAttack()
         {
-            _canFire = false;
-            yield return _wait;
-            _canFire = true;
-        }
-
-        private IEnumerator StartAttackInternal()
-        {
-            while (true)
-            {
-                if (_canFire)
-                {
-                    OnPerformAttack();
-                    StartCoroutine(ChangeCanFire());
-                }
-
-                yield return _wait;
-            }
+            _animation.PlayAttack();
         }
 
         #endregion

@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
+using UnityEngine.Scripting;
 
 namespace MagicWar.Game.Enemies
 {
@@ -11,6 +13,12 @@ namespace MagicWar.Game.Enemies
         private static readonly int Speed = Animator.StringToHash("Speed");
 
         [SerializeField] private Animator _animator;
+
+        #endregion
+
+        #region Events
+
+        public event Action OnMeleeAttackHit;
 
         #endregion
 
@@ -29,6 +37,16 @@ namespace MagicWar.Game.Enemies
         public void SetSpeed(float value)
         {
             _animator.SetFloat(Speed, value);
+        }
+
+        #endregion
+
+        #region Private methods
+
+        [Preserve]
+        private void MeleeAttackHit()
+        {
+            OnMeleeAttackHit?.Invoke();
         }
 
         #endregion

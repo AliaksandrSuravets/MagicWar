@@ -7,12 +7,10 @@ namespace MagicWar.Game.Enemies
     {
         #region Variables
 
-        [Header("Component")]
-        [SerializeField] private EnemyAnimation _animation;
         [Header(nameof(EnemyRangeAttack))]
         [SerializeField] private Spell _spellPrefab;
         [SerializeField] private Transform _spellSpawnPositionTransform;
-        
+
         private Transform _playerTransform;
 
         #endregion
@@ -35,7 +33,7 @@ namespace MagicWar.Game.Enemies
             Vector3 direction = _playerTransform.position - transform.position;
             transform.up = direction;
             Instantiate(_spellPrefab, _spellSpawnPositionTransform.position, transform.rotation);
-           _animation.PlayAttack();
+            Animation.PlayAttack();
         }
 
         #endregion
