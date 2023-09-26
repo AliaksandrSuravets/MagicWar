@@ -15,7 +15,7 @@ namespace MagicWar.Service
 
             GameObject gameObjectData = (GameObject) data;
 
-            if (gameObjectData.CompareTag("Boss"))
+            if (gameObjectData.CompareTag(Tag.Boss))
             {
                 LevelService.NextScene();
             }

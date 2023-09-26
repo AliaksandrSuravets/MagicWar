@@ -11,10 +11,10 @@ namespace MagicWar.Service.Events
         #region Variables
 
         [Tooltip("Event to register with.")]
-        public GameEvent Event;
+        [SerializeField] private GameEvent Event;
 
         [Tooltip("Response to invoke when Event is raised.")]
-        public CustomGameEvent Response;
+        [SerializeField] private CustomGameEvent Response;
 
         #endregion
 
