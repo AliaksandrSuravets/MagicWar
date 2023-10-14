@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using MagicWar.Service.Input;
+using UnityEngine;
 
 namespace MagicWar.Game.Player
 {
@@ -8,9 +9,11 @@ namespace MagicWar.Game.Player
 
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
+        [SerializeField] private Rigidbody2D _rb;
 
         [Header("Settings")]
         [SerializeField] private float _speed = 5f;
+        private IInputService _inputService;
 
         #endregion
 
@@ -18,8 +21,27 @@ namespace MagicWar.Game.Player
 
         private void Update()
         {
+            if (_inputService == null)
+            {
+                return;
+            }
+
             Rotate();
             Move();
+        }
+
+        #endregion
+
+        #region Public methods
+
+        public void Construct(IInputService inputService)
+        {
+            _inputService = inputService;
+        }
+
+        public void Dispose()
+        {
+            _inputService = null;
         }
 
         #endregion
@@ -28,23 +50,15 @@ namespace MagicWar.Game.Player
 
         private void Move()
         {
-            Vector2 input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-            Vector2 velocity = input * _speed;
+            Vector2 velocity = _inputService.Axes * _speed;
 
-            Vector3 currentPosition = transform.position;
-            currentPosition.x += velocity.x * Time.deltaTime;
-            currentPosition.y += velocity.y * Time.deltaTime;
-            transform.position = currentPosition;
-
+            _rb.velocity = velocity;
             _animation.SetSpeed(velocity.magnitude);
         }
 
         private void Rotate()
         {
-            Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            worldMousePosition.z = 0;
-            Vector3 direction = worldMousePosition - transform.position;
-            transform.up = direction;
+            transform.up = _inputService.LookDirection;
         }
 
         #endregion

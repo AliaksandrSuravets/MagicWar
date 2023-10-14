@@ -22,7 +22,7 @@ namespace MagicWar.Game.Enemies
 
         #region Events
 
-        public event Action OnHappened;
+        public event Action<EnemyDeath> OnHappened;
 
         #endregion
 
@@ -63,7 +63,7 @@ namespace MagicWar.Game.Enemies
             IsDead = true;
             _collider2D.enabled = false;
             _animation.PlayDeath();
-            OnHappened?.Invoke();
+            OnHappened?.Invoke(this);
 
             if (_onEnemyDied != null)
             {

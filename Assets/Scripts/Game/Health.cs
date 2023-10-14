@@ -12,6 +12,7 @@ namespace MagicWar.Game
 
         private int _current;
 
+        
         #endregion
 
         #region Events
@@ -21,6 +22,8 @@ namespace MagicWar.Game
         #endregion
 
         #region Properties
+
+        public int MAXHp => _maxHp;
 
         public int Current
         {

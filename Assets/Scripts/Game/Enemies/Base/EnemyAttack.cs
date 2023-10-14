@@ -1,4 +1,6 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
+using UnityEditor.VersionControl;
 using UnityEngine;
 
 namespace MagicWar.Game.Enemies
@@ -59,6 +61,7 @@ namespace MagicWar.Game.Enemies
         protected virtual void OnPerformAttack()
         {
             _animation.PlayAttack();
+       
         }
 
         #endregion
