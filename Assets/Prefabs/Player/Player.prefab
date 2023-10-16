@@ -144,7 +144,7 @@ Transform:
   - {fileID: 8564739711129635456}
   - {fileID: 1883547189800071409}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2198235179236693210
 MonoBehaviour:
@@ -173,6 +173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac83e25a37f94a1ea088098e43479d0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _mana: 100
   _animation: {fileID: 5544529683092099054}
   _health: {fileID: 1447885101604129604}
   _spellPrefab: {fileID: 4254326833109582094, guid: 781b849f25f61034994958b54db481ea, type: 3}

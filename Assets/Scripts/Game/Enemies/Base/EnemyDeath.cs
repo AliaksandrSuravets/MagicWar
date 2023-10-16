@@ -1,6 +1,7 @@
 ﻿using System;
 using MagicWar.Service;
 using MagicWar.Service.Events;
+using Pathfinding;
 using UnityEngine;
 using Unity.VisualScripting;
 
@@ -17,7 +18,9 @@ namespace MagicWar.Game.Enemies
         [SerializeField] private GameEvent _onEnemyDied;
         
         [SerializeField] private EnemyComponent[] _enemyComponents;
-
+        [SerializeField] private AIDestinationSetter _aiDestinationSetter;
+        [SerializeField] private AIPath _aiPath;
+        
         #endregion
 
         #region Events
@@ -60,6 +63,9 @@ namespace MagicWar.Game.Enemies
                 enemyComponent.enabled = false;
             }
 
+            _aiDestinationSetter.enabled = false;
+            _aiPath.enabled = false;
+            
             IsDead = true;
             _collider2D.enabled = false;
             _animation.PlayDeath();

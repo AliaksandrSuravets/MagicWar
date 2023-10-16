@@ -1,4 +1,5 @@
 ﻿using System;
+using Pathfinding;
 using Unity.Mathematics;
 using UnityEngine;
 
@@ -11,6 +12,11 @@ namespace MagicWar.Game.Enemies
         [SerializeField] private TriggerObserver _triggerObserver;
         [SerializeField] private EnemyMovement _enemyMovement;
         [SerializeField] private EnemyIdle _idle;
+
+        [SerializeField] private AIDestinationSetter _aiDestinationSetter;
+        [SerializeField] private AIPath _aiPath;
+        
+        
 
         #endregion
 
@@ -34,11 +40,15 @@ namespace MagicWar.Game.Enemies
 
         private void OnObserverEnter(Collider2D other)
         {
+            _aiDestinationSetter.enabled = true;
+            _aiPath.enabled = true;
             SetTarget(other.transform);
         }
 
         private void OnObserverExit(Collider2D other)
         {
+            _aiDestinationSetter.enabled = false;
+            _aiPath.enabled = false;
             SetTarget(null);
         }
 

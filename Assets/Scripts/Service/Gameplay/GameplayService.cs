@@ -49,7 +49,7 @@ namespace MagicWar.Service.Gameplay
             }
             else
             {
-                Debug.LogError($"OLOLOL! YOU WIN! ALL GAME FINISHED!");
+                _stateMachine.Enter<Win>();
             }
         }
 

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +10,9 @@ namespace MagicWar.Game.Ui
 
         [SerializeField] private Image _image;
         [SerializeField] private Health _unitHp;
-
+        
+        
+        
         #endregion
 
         #region Unity lifecycle
@@ -20,9 +23,10 @@ namespace MagicWar.Game.Ui
             {
                 return;
             }
-
+            
             Init();
         }
+        
 
         private void OnDestroy()
         {

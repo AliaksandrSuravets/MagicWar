@@ -1,5 +1,8 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
+using Lean.Pool;
 using MagicWar.Game.Spells;
+using TMPro;
 using UnityEngine;
 
 namespace MagicWar.Game.Player
@@ -7,6 +10,9 @@ namespace MagicWar.Game.Player
     public class PlayerAttack : MonoBehaviour
     {
         #region Variables
+
+        [Header("Mana")]
+        [SerializeField] private int _mana;
 
         [Header("Components")]
         [SerializeField] private PlayerAnimation _animation;
@@ -25,13 +31,22 @@ namespace MagicWar.Game.Player
 
         private void Update()
         {
-            if (!Input.GetButtonDown("Fire1") || !_canFire)
+            if (!Input.GetButtonDown("Fire1") || !_canFire || _mana < 1)
             {
                 return;
             }
 
             StartCoroutine(ChangeCanFire());
             Fire();
+        }
+
+        #endregion
+
+        #region Public methods
+
+        public void ChangeMana(int value)
+        {
+            _mana += value;
         }
 
         #endregion
@@ -47,11 +62,12 @@ namespace MagicWar.Game.Player
 
         private void CreateSpell()
         {
-            Instantiate(_spellPrefab, _spellSpawnPositionTransform.position, transform.rotation);
+            LeanPool.Spawn(_spellPrefab, _spellSpawnPositionTransform.position, transform.rotation);
         }
 
         private void Fire()
         {
+            _mana--;
             _animation.PlayAttack();
             CreateSpell();
         }
